@@ -17,11 +17,13 @@ def t_SECTION(t):
     return t
 
 def t_TRUE(t):
-    r'(true|1)'
+    r'(true)'
+    t.value = True
     return t
 
 def t_FALSE(t):
-    r'(false|0)'
+    r'(false)'
+    t.value = False
     return t
 
 def t_IDENTIFIER(t):
