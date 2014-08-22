@@ -3,9 +3,11 @@ import re
 
 tokens = ( 'SECTION',
            'IDENTIFIER',
+           'STRING',
            'LBRACE',
            'RBRACE',
            'SEMI',
+           'EQU',
            'TRUE',
            'FALSE' )
            
@@ -26,8 +28,17 @@ def t_IDENTIFIER(t):
     r'[a-zA-Z\-0-9]+'
     return t
 
+def t_STRING(t):
+    r'(\".*\"|\'.*\')'
+    t.value = t.value[1:-1]
+    return t
+
 def t_LBRACE(t):
     r'{'
+    return t
+
+def t_EQU(t):
+    r'='
     return t
 
 def t_RBRACE(t):
